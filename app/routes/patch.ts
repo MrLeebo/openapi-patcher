@@ -7,10 +7,6 @@ export const config = {
   runtime: "experimental-edge",
 };
 
-export const headers: HeadersFunction = () => ({
-  "Access-Control-Allow-Origin": "*",
-});
-
 export const loader: LoaderFunction = async ({ request }) => {
   const url = new URL(request.url);
   const doc = url.searchParams.get("doc");
@@ -20,5 +16,9 @@ export const loader: LoaderFunction = async ({ request }) => {
 
   const result = await patchJson(doc, patch);
 
-  return json(result);
+  return json(result, {
+    headers: {
+      "Access-Control-Allow-Origin": "*",
+    },
+  });
 };

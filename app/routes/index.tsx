@@ -146,24 +146,11 @@ export default function Index() {
             new URLSearchParams({
               doc: "https://someapi.com/docs.json",
               patch: "https://gist.githubusercontent.com/username/gist/raw/patch.json",
-            })}
-          \`)
+            })
+          }\`)
         `,
           }}
-        ></code>
-      </pre>
-      <pre>
-        <code
-          dangerouslySetInnerHTML={{
-            __html: `
-          https://openapi-patcher.vercel.app/patch?${new URLSearchParams({
-            doc: "https://someapi.com/docs.json",
-            patch:
-              "https://gist.githubusercontent.com/username/gist/raw/patch.json",
-          }).toString()}
-        `,
-          }}
-        ></code>
+        />
       </pre>
       <p>
         Source code is available{" "}
