@@ -1,10 +1,15 @@
-import { json, LoaderFunction } from "@remix-run/node";
+import { HeadersFunction, json, LoaderFunction } from "@remix-run/node";
 import invariant from "tiny-invariant";
 import patchJson from "services/patchJson";
 
+// I dunno if vercel supports this or not for remix, guess we'll find out!
 export const config = {
   runtime: "experimental-edge",
 };
+
+export const headers: HeadersFunction = () => ({
+  "Access-Control-Allow-Origin": "*",
+});
 
 export const loader: LoaderFunction = async ({ request }) => {
   const url = new URL(request.url);
@@ -13,7 +18,7 @@ export const loader: LoaderFunction = async ({ request }) => {
   invariant(doc, "doc parameter is required");
   invariant(patch, "patch parameter is required");
 
-  return json(await patchJson(doc, patch), {
-    headers: { "Access-Control-Allow-Origin": "*" },
-  });
+  const result = await patchJson(doc, patch);
+
+  return json(result);
 };

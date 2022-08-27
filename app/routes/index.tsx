@@ -165,6 +165,16 @@ export default function Index() {
           }}
         ></code>
       </pre>
+      <p>
+        Source code is available{" "}
+        <a
+          href="https://github.com/MrLeebo/openapi-patcher"
+          rel="noreferrer noopener"
+        >
+          here
+        </a>
+        .
+      </p>
     </div>
   );
 }
