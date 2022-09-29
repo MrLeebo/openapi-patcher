@@ -1,5 +1,4 @@
 import {
-  Link,
   Links,
   LiveReload,
   Meta,
@@ -8,6 +7,16 @@ import {
   ScrollRestoration,
   useCatch,
 } from "@remix-run/react";
+import styles from "styles/app.css";
+
+export function links() {
+  return [
+    {
+      rel: "stylesheet",
+      href: styles,
+    },
+  ];
+}
 
 // https://remix.run/api/conventions#default-export
 // https://remix.run/api/conventions#route-filenames
@@ -81,7 +90,7 @@ function Document({
         <Links />
       </head>
       <body>
-        {children}
+        <div id="root">{children}</div>
         <ScrollRestoration />
         <Scripts />
         <LiveReload />
